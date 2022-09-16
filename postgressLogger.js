@@ -31,10 +31,11 @@ const connectDb = async () => {
         await client.connect().then(
             console.log("Conected")
         )
-        //createTestTable.createTestTable(client); Node export that creates dummy data when called.
-        const res = await client.query('SELECT * FROM person')
+        //createTestTable.createTestTable(client); //Node export that creates dummy data when called.
+        const res = await client.query('SELECT * FROM usrdevice')
         console.log(res.rows)
         exportData = res.rows
+        // await  client.query("INSERT INTO logsystem VALUES (nextval('logsystem_id_seq'), CURRENT_TIMESTAMP(2), (SELECT id FROM usrdevice WHERE ip='' AND enabled),'PSC Service Mode: AUTOMATIC, Service Status: NOT READY, Service State: OFFLINE'");
     } catch (error) {
         console.log(error)
     }
